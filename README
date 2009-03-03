@@ -1,0 +1,19 @@
+Example java code for using Amazon SimpleDB.
+Uses typica library
+Puts returned data into Yahoo UI (YUI) Data Table 
+
+These examples illustrate using SimpleDB in a step-by-step approach.
+They should serve as a quick start introduction and tutorial.
+The goal is for each program to be small and east to understand.
+
+3 Java programs run on command line or in IDE:
+SimpleDBCreateDomain.java - creates an Amazon Simple DB domain called example
+SimpleDBLoadData.java - loads sample records in example domaincreates an Amazon Simple DB domain called example
+SimpleDBShowData.java - shows loaded data in pipe-delimited format
+
+Web Example
+SimpleDBShowData.jsp - JSP that returns data in pipe-delimited format
+yuitest.html - Yahoo data table displays date. Reads SimpleDBShowData.jsp
+
+
+
