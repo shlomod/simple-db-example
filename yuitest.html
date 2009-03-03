@@ -1,0 +1,55 @@
+
+<!-- Combo-handled YUI CSS files: --> 
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/datatable/assets/skins/sam/datatable.css"> 
+<!-- Combo-handled YUI JS files: --> 
+<script type="text/javascript" src="http://yui.yahooapis.com/combo?2.7.0/build/yahoo-dom-event/yahoo-dom-event.js&2.7.0/build/connection/connection-min.js&2.7.0/build/element/element-min.js&2.7.0/build/datasource/datasource-min.js&2.7.0/build/datatable/datatable-min.js"></script> 
+
+<body class=" yui-skin-sam">
+
+
+
+<div id="text"></div>
+<div id="textWithHeaderData"></div>
+
+
+<script type="text/javascript">
+YAHOO.util.Event.addListener(window, "load", function() {
+    YAHOO.example.XHR_Text = function() {
+        var formatUrl = function(elCell, oRecord, oColumn, sData) {
+            elCell.innerHTML = "<a href='" + oRecord.getData("Url") + "' target='_blank'>" + sData + "</a>";
+        };
+
+        var myColumnDefs = [
+            {key:"Title", sortable:true},
+            {key:"Author",sortable:true},
+            {key:"Year",sortable:true},
+            {key:"Pages",sortable:true},
+            {key:"Rating"},
+            {key:"Keyword"}
+
+        ];
+
+        var myDataSource = new YAHOO.util.DataSource("SimpleDBShowData.jsp");
+        myDataSource.responseType = YAHOO.util.DataSource.TYPE_TEXT;
+        myDataSource.responseSchema = {
+            recordDelim: "\n",
+            fieldDelim: "|",
+            fields: ["Item", "Title","Author","Year","Pages","Rating","Keyword"]
+        };
+
+        var myDataTable = new YAHOO.widget.DataTable("text", myColumnDefs,
+                myDataSource, {caption:"Example: Textual Data Over XHR"});
+
+
+
+                
+        return {
+            oDS: myDataSource,
+            oDT: myDataTable,
+        };
+    }();
+});
+
+</script>
+
+</body>
